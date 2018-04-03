@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,22 +24,20 @@ public class Main extends Application
 	{
 		primaryStage.setTitle("Kitchen Helper");
 		
-		Label label1 = new Label("Welcome to Kitchen Helper");
-		Label label2 = new Label("What do we have to work with today?");
-		Label label3 = new Label(" ");
+		Label label1 = new Label("Welcome to Kitchen Helper\nWhat do you have in your fridge?");
+		
 		
 		VBox layout1 = new VBox(25);
-		
-		
-		   
-		
-		
-		
-		
-		
-		
 		// first 5 is top, second is left, third is bottom, last the 15 is from the right
-		layout1.setPadding(new Insets(5,5,5,15));
+
+		label1.setPadding(new Insets(5,5,5,15));
+		
+		HBox hFood = new HBox();
+		hFood.setSpacing(20);
+		HBox hBtns = new HBox();
+		//hBtns.setSpacing(250);	
+		
+		//String format = ("-fx-font: 15 arial; -fx-background-radius: 30; -fx-base: #ffffff; -fx-font-weight: bold;");
 		
 		Button btnDairy = new Button("Dairy");
 		Button btnMeat = new Button("Meat");		
@@ -46,8 +45,9 @@ public class Main extends Application
 		Button btnVeg = new Button("Vegetables");
 		Button btnGrain = new Button("Grains");
 		Button btnDone = new Button("Done");
-		btnDone.setStyle("-fx-font: 15 arial; -fx-background-radius: 30; -fx-base: #123456; -fx-font-weight: bold;");
+		//btnDone.setStyle(format);
 		
+
 
 		btnDairy.setOnAction(e -> DairyMenu(primaryStage));
 		btnMeat.setOnAction(e -> MeatMenu(primaryStage));
@@ -66,15 +66,14 @@ public class Main extends Application
 			}
 		}
 		);
-		
-		
-		HBox hbButtons = new HBox();
-		hbButtons.setSpacing(250);		 
 
-		hbButtons.getChildren().addAll(label3, btnDone);
-		   
-	
-		layout1.getChildren().addAll(label1, label2, btnDairy, btnMeat, btnFruit, btnVeg, btnGrain, hbButtons);
+		hBtns.setAlignment(Pos.CENTER);
+		hFood.setAlignment(Pos.CENTER);
+		
+		hFood.getChildren().addAll(btnDairy, btnMeat, btnFruit, btnVeg, btnGrain);
+		hBtns.getChildren().addAll(btnDone);
+		
+		layout1.getChildren().addAll(label1, hFood, hBtns);
 
 		
 		Opening = new Scene(layout1, 400, 400);
@@ -92,8 +91,16 @@ public class Main extends Application
 		VBox layout1 = new VBox(20);
 		Label lblDairy = new Label("What dairy do you have in your fridge?");
 		Scene Dairy = new Scene(layout1, 400, 400);
-		layout1.setPadding(new Insets(5,5,5,15));
+		lblDairy.setPadding(new Insets(5,5,5,15));
+		
+		HBox hBtns = new HBox();
+		hBtns.setSpacing(200);
 
+		// check box layout
+		VBox checks = new VBox();
+		checks.setSpacing(5);
+		
+		// buttons layout
 		Button btnAdd = new Button("Add");
 		Button btnBack = new Button("Back");
 		
@@ -134,8 +141,13 @@ public class Main extends Application
 			{ e1.printStackTrace(); }
 		});
 		
+		checks.getChildren().addAll(c1, c2, c3, c4, c5);
+		checks.setPadding(new Insets(5, 5, 5, 15));
 		
-		layout1.getChildren().addAll(lblDairy, c1, c2, c3, c4, c5, btnAdd, btnBack);
+		hBtns.getChildren().addAll(btnAdd, btnBack);
+		hBtns.setAlignment(Pos.CENTER);
+		
+		layout1.getChildren().addAll(lblDairy, checks, hBtns);
 		primaryStage.setScene(Dairy);
 		primaryStage.show();
 	}	
@@ -147,9 +159,17 @@ public class Main extends Application
 	{
 		VBox layout1 = new VBox(20);
 		Label lblMeat = new Label("What meat do you have in your fridge?");
-		Scene Meat= new Scene(layout1, 400, 400);
-		layout1.setPadding(new Insets(5,5,5,15));
+		Scene Meat = new Scene(layout1, 400, 400);
+		lblMeat.setPadding(new Insets(5,5,5,15));
+		
+		HBox hBtns = new HBox();
+		hBtns.setSpacing(200);
 
+		// check box layout
+		VBox checks = new VBox();
+		checks.setSpacing(5);
+		
+		// buttons layout
 		Button btnAdd = new Button("Add");
 		Button btnBack = new Button("Back");
 		
@@ -190,8 +210,13 @@ public class Main extends Application
 			}
 		});
 		
+		checks.getChildren().addAll(c1, c2, c3, c4, c5);
+		checks.setPadding(new Insets(5, 5, 5, 15));
 		
-		layout1.getChildren().addAll(lblMeat, c1, c2, c3, c4, c5, btnAdd, btnBack);
+		hBtns.getChildren().addAll(btnAdd, btnBack);
+		hBtns.setAlignment(Pos.CENTER);
+		
+		layout1.getChildren().addAll(lblMeat, checks, hBtns);
 		primaryStage.setScene(Meat);
 		primaryStage.show();
 	}
@@ -202,10 +227,18 @@ public class Main extends Application
 	public void FruitMenu(Stage primaryStage)
 	{
 		VBox layout1 = new VBox(20);
-		Label fLabel = new Label("What fruit do you have in your fridge?");
-		Scene Fruit= new Scene(layout1, 400, 400);
-		layout1.setPadding(new Insets(5,5,5,15));
+		Label lblFruit = new Label("What fruit do you have in your fridge?");
+		Scene Fruit = new Scene(layout1, 400, 400);
+		lblFruit.setPadding(new Insets(5,5,5,15));
+		
+		HBox hBtns = new HBox();
+		hBtns.setSpacing(200);
 
+		// check box layout
+		VBox checks = new VBox();
+		checks.setSpacing(5);
+		
+		// buttons layout
 		Button btnAdd = new Button("Add");
 		Button btnBack = new Button("Back");
 		
@@ -246,8 +279,13 @@ public class Main extends Application
 			}
 		});
 		
+		checks.getChildren().addAll(c1, c2, c3, c4, c5);
+		checks.setPadding(new Insets(5, 5, 5, 15));
 		
-		layout1.getChildren().addAll(fLabel, c1, c2, c3, c4, c5, btnAdd, btnBack);
+		hBtns.getChildren().addAll(btnAdd, btnBack);
+		hBtns.setAlignment(Pos.CENTER);
+		
+		layout1.getChildren().addAll(lblFruit, checks, hBtns);
 		primaryStage.setScene(Fruit);
 		primaryStage.show();
 	}
@@ -258,10 +296,18 @@ public class Main extends Application
 	public void VeggieMenu(Stage primaryStage)
 	{
 		VBox layout1 = new VBox(20);
-		Label vLabel = new Label("What vegetables do you have in your fridge?");
+		Label lblVeg = new Label("What vegetables do you have in your fridge?");
 		Scene Veggie= new Scene(layout1, 400, 400);
-		layout1.setPadding(new Insets(5,5,5,15));
+		lblVeg.setPadding(new Insets(5,5,5,15));
+		
+		HBox hBtns = new HBox();
+		hBtns.setSpacing(200);
 
+		// check box layout
+		VBox checks = new VBox();
+		checks.setSpacing(5);
+		
+		// buttons layout
 		Button btnAdd = new Button("Add");
 		Button btnBack = new Button("Back");
 		
@@ -303,7 +349,13 @@ public class Main extends Application
 		});
 		
 		
-		layout1.getChildren().addAll(vLabel, c1, c2, c3, c4, c5, btnAdd, btnBack);
+		checks.getChildren().addAll(c1, c2, c3, c4, c5);
+		checks.setPadding(new Insets(5, 5, 5, 15));
+		
+		hBtns.getChildren().addAll(btnAdd, btnBack);
+		hBtns.setAlignment(Pos.CENTER);
+		
+		layout1.getChildren().addAll(lblVeg, checks, hBtns);
 		primaryStage.setScene(Veggie);
 		primaryStage.show();
 	}
@@ -314,9 +366,17 @@ public class Main extends Application
 	public void GrainMenu(Stage primaryStage)
 	{
 		VBox layout1 = new VBox(20);
-		Label vLabel = new Label("What grains do you have in your fridge?");
-		Scene Veggie= new Scene(layout1, 400, 400);
-		layout1.setPadding(new Insets(5,5,5,15));
+		Label lblGrain = new Label("What grains do you have in your fridge?");
+		Scene Grain = new Scene(layout1, 400, 400);
+		lblGrain.setPadding(new Insets(5,5,5,15));
+		
+		// check box layout
+		VBox checks = new VBox();
+		checks.setSpacing(5);
+		
+		// buttons layout
+		HBox hBtns = new HBox();
+		hBtns.setSpacing(200);
 
 		Button btnAdd = new Button("Add");
 		Button btnBack = new Button("Back");
@@ -354,9 +414,15 @@ public class Main extends Application
 			}
 		});
 		
+		checks.getChildren().addAll(c1, c2, c3);
+		checks.setPadding(new Insets(5, 5, 5, 15));
 		
-		layout1.getChildren().addAll(vLabel, c1, c2, c3, btnAdd, btnBack);
-		primaryStage.setScene(Veggie);
+		hBtns.getChildren().addAll(btnAdd, btnBack);
+		hBtns.setAlignment(Pos.CENTER);
+		
+		layout1.getChildren().addAll(lblGrain, checks, hBtns);
+		
+		primaryStage.setScene(Grain);
 		primaryStage.show();
 	}
 	
@@ -381,9 +447,13 @@ public class Main extends Application
 	public void SelectionMade(Stage primaryStage)
 	{
 		VBox layout1 = new VBox(20);
-		layout1.setPadding(new Insets(5,5,5,15));
-
-		Label sLabel = new Label("Adding items, you now have " + fridge.getCounter() + " items");
+		
+		Label lblS = new Label("Adding items, you now have " + fridge.getCounter() + " items");
+		lblS.setPadding(new Insets(5,5,5,15));
+		
+		HBox hBtns = new HBox(20);
+		hBtns.setSpacing(200);
+		hBtns.setAlignment(Pos.CENTER);
 
 		Scene Selection= new Scene(layout1, 400, 400);
 		
@@ -415,8 +485,8 @@ public class Main extends Application
 		}
 		);
 		
-
-		layout1.getChildren().addAll(sLabel, btnCon, btnDone);
+		hBtns.getChildren().addAll(btnCon, btnDone);
+		layout1.getChildren().addAll(lblS, hBtns);
 		primaryStage.setScene(Selection);
 		primaryStage.show();
 	}
@@ -427,10 +497,16 @@ public class Main extends Application
 	public void conclusion(Stage primaryStage)
 	{
 		VBox layout1 = new VBox(20);
-		layout1.setPadding(new Insets(5,5,5,5));
+		
+		HBox hBtns = new HBox(20);
+		hBtns.setSpacing(200);
+		hBtns.setAlignment(Pos.CENTER);
+
 		
 		TextArea txtDone = new TextArea();
+		txtDone.setPadding(new Insets(5, 5, 5, 5));
 		txtDone.setEditable(false);
+		
 		
 		Button btnCon = new Button("Continue");
 		btnCon.setOnAction(e -> 
@@ -468,7 +544,8 @@ public class Main extends Application
 
 		Scene Selection= new Scene(layout1, 400, 400);
 		
-		layout1.getChildren().addAll(txtDone, btnCon, btnExit);
+		hBtns.getChildren().addAll(btnCon, btnExit);
+		layout1.getChildren().addAll(txtDone, hBtns);
 		primaryStage.setScene(Selection);
 		primaryStage.show();
 	}
@@ -490,5 +567,6 @@ public class Main extends Application
 		launch(args);	
 	}
 }
+
 
 
