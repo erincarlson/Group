@@ -8,8 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+
 
 
 public class Main extends Application
@@ -18,35 +19,38 @@ public class Main extends Application
 	ArrayList<String> stuff = new ArrayList<String>();
 	ArrayList<String> recipes = new ArrayList<String>();
 	Scene Opening, Other;
+	String grey = ("-fx-font: 14 arial; -fx-background-radius: 8,7,6; -fx-base: #dddddd;");
+
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception
 	{
+
 		primaryStage.setTitle("Kitchen Helper");
 		
-		Label label1 = new Label("Welcome to Kitchen Helper\nWhat do you have in your fridge?");
-		
+		Label label1 = new Label("Welcome to Kitchen Helper, what do you have in your fridge?");
+		label1.setPadding(new Insets(5, 5, 5, 35));
 		
 		VBox layout1 = new VBox(25);
-		// first 5 is top, second is left, third is bottom, last the 15 is from the right
-
-		label1.setPadding(new Insets(5,5,5,15));
-		
+			
 		HBox hFood = new HBox();
 		hFood.setSpacing(20);
 		HBox hBtns = new HBox();
-		//hBtns.setSpacing(250);	
 		
-		//String format = ("-fx-font: 15 arial; -fx-background-radius: 30; -fx-base: #ffffff; -fx-font-weight: bold;");
+		String format = ("-fx-font: 14 arial; -fx-background-radius: 8,7,6; -fx-base: #ffffff;");
 		
 		Button btnDairy = new Button("Dairy");
-		Button btnMeat = new Button("Meat");		
+		btnDairy.setStyle(format);
+		Button btnMeat = new Button("Meat");
+		btnMeat.setStyle(format);
 		Button btnFruit = new Button("Fruit");
+		btnFruit.setStyle(format);
 		Button btnVeg = new Button("Vegetables");
+		btnVeg.setStyle(format);
 		Button btnGrain = new Button("Grains");
+		btnGrain.setStyle(format);
 		Button btnDone = new Button("Done");
-		//btnDone.setStyle(format);
-		
+		btnDone.setStyle("-fx-font: 16 arial; -fx-background-radius: 8,7,6; -fx-base: #ffffff;");
 
 
 		btnDairy.setOnAction(e -> DairyMenu(primaryStage));
@@ -60,7 +64,7 @@ public class Main extends Application
 			{
 				conclusion(primaryStage);
 			}
-			catch (Exception e1) 
+			catch (Exception e1)
 			{
 				e1.printStackTrace();
 			}
@@ -72,7 +76,6 @@ public class Main extends Application
 		
 		hFood.getChildren().addAll(btnDairy, btnMeat, btnFruit, btnVeg, btnGrain);
 		hBtns.getChildren().addAll(btnDone);
-		
 		layout1.getChildren().addAll(label1, hFood, hBtns);
 
 		
@@ -92,17 +95,19 @@ public class Main extends Application
 		Label lblDairy = new Label("What dairy do you have in your fridge?");
 		Scene Dairy = new Scene(layout1, 400, 400);
 		lblDairy.setPadding(new Insets(5,5,5,15));
-		
-		HBox hBtns = new HBox();
-		hBtns.setSpacing(200);
-
+				
 		// check box layout
 		VBox checks = new VBox();
 		checks.setSpacing(5);
 		
 		// buttons layout
+		HBox hBtns = new HBox();
+		hBtns.setSpacing(200);
+		
 		Button btnAdd = new Button("Add");
 		Button btnBack = new Button("Back");
+		btnAdd.setStyle(grey);
+		btnBack.setStyle(grey);
 		
 		CheckBox [] boxes = new CheckBox[5];
 		
@@ -162,16 +167,20 @@ public class Main extends Application
 		Scene Meat = new Scene(layout1, 400, 400);
 		lblMeat.setPadding(new Insets(5,5,5,15));
 		
-		HBox hBtns = new HBox();
-		hBtns.setSpacing(200);
-
 		// check box layout
 		VBox checks = new VBox();
 		checks.setSpacing(5);
 		
 		// buttons layout
+		HBox hBtns = new HBox();
+		hBtns.setSpacing(200);
+		
 		Button btnAdd = new Button("Add");
 		Button btnBack = new Button("Back");
+		btnAdd.setStyle(grey);
+		btnBack.setStyle(grey);
+		
+
 		
 		CheckBox [] boxes = new CheckBox[5];
 		
@@ -230,17 +239,20 @@ public class Main extends Application
 		Label lblFruit = new Label("What fruit do you have in your fridge?");
 		Scene Fruit = new Scene(layout1, 400, 400);
 		lblFruit.setPadding(new Insets(5,5,5,15));
-		
-		HBox hBtns = new HBox();
-		hBtns.setSpacing(200);
 
 		// check box layout
 		VBox checks = new VBox();
 		checks.setSpacing(5);
 		
 		// buttons layout
+		HBox hBtns = new HBox();
+		hBtns.setSpacing(200);
+		
 		Button btnAdd = new Button("Add");
 		Button btnBack = new Button("Back");
+		btnAdd.setStyle(grey);
+		btnBack.setStyle(grey);
+
 		
 		CheckBox [] boxes = new CheckBox[5];
 		
@@ -299,17 +311,19 @@ public class Main extends Application
 		Label lblVeg = new Label("What vegetables do you have in your fridge?");
 		Scene Veggie= new Scene(layout1, 400, 400);
 		lblVeg.setPadding(new Insets(5,5,5,15));
-		
-		HBox hBtns = new HBox();
-		hBtns.setSpacing(200);
 
 		// check box layout
 		VBox checks = new VBox();
 		checks.setSpacing(5);
 		
 		// buttons layout
+		HBox hBtns = new HBox();
+		hBtns.setSpacing(200);
+		
 		Button btnAdd = new Button("Add");
 		Button btnBack = new Button("Back");
+		btnAdd.setStyle(grey);
+		btnBack.setStyle(grey);
 		
 		CheckBox [] boxes = new CheckBox[5];
 		
@@ -380,6 +394,8 @@ public class Main extends Application
 
 		Button btnAdd = new Button("Add");
 		Button btnBack = new Button("Back");
+		btnAdd.setStyle(grey);
+		btnBack.setStyle(grey);
 		
 		CheckBox [] boxes = new CheckBox[3];
 		
@@ -554,6 +570,10 @@ public class Main extends Application
 	
 	
 	// thing to bail out, mostly a formatting thing I will remove it prior to submitting it
+
+
+	
+	
 	public static void cancel()
 	{
 		System.exit(0);
